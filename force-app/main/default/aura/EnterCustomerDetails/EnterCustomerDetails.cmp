@@ -1,0 +1,41 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="CreatePaymentContact">
+    <aura:attribute name="recordId" type="String"/>
+    <aura:registerEvent name="PaymentDetailsevt" type="c:PaymentDetailsevt"/>
+    <div class="slds-page-header" align="center">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-opportunity" title="Contact">
+                            <span class="slds-assistive-text">Contact Information</span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Rohde Corp - 80,000 Widgets">Contact Information</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <lightning:recordEditForm
+                                  onsuccess="{!c.handleCustomerInformation}"
+                                  objectApiName="Contact">
+            <!-- the messages component is for error messages -->
+            <lightning:messages />
+            
+            <lightning:inputField fieldName="FirstName" />
+            <lightning:inputField fieldName="LastName" />
+            <lightning:inputField fieldName="Phone" />
+            <lightning:inputField fieldName="Email" />
+            <div class="slds-m-top_medium">
+                <lightning:button variant="brand" type="submit" name="save" label="Proceed to Payment"/>
+            </div>
+        </lightning:recordEditForm>
+    </div>
+</aura:component>

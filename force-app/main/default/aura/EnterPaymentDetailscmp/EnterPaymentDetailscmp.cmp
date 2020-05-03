@@ -1,0 +1,41 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler event="c:PaymentDetailsevt" action="{!c.handlePayment}"/> 
+    <div class="slds-page-header" align="center">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-opportunity" title="Payment Information">
+                            <span class="slds-assistive-text">Payment Information</span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Payment">Payment Information</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <lightning:recordEditForm
+                              onsuccess="{!c.handlePayment}"
+                                  objectApiName="PaymentInformation__c">
+            <!-- the messages component is for error messages -->
+            <lightning:messages />
+             <lightning:inputField fieldName="Payment_Method__c"/>
+           <lightning:inputField fieldName="Card_Number__c"/>
+            <lightning:inputField fieldName="Card_Expiry__c"/>
+            <lightning:inputField fieldName="CVV__c"/>
+            <lightning:inputField fieldName="Send_SMS__c "/>
+            <lightning:inputField fieldName="Sent_Email__c "/>
+            <div class="slds-m-top_medium">
+               <lightning:button variant="brand" type="submit" name="save" label="Make Payment"/>
+            </div>
+        </lightning:recordEditForm>
+    </div>
+</aura:component>
